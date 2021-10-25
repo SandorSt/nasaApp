@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  Image,
-  Animated,
-} from "react-native";
+import { StyleSheet, Text, View, StatusBar, Animated } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Rocket from "./app/assets/rocket.png";
+
+import Home from "./app/screens/home/home";
+import Rover from "./app/screens/rover/rover";
+import Detail from "./app/screens/detail/detail";
 
 export default function App() {
   const [animated, setAnimated] = useState(false);
@@ -62,7 +61,13 @@ export default function App() {
         </View>
       </>
     );
-  return <Text>Hello World!</Text>;
+  return (
+    <NavigationContainer>
+      <Stack.Navigatot>
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigatot>
+    </NavigationContainer>
+  );
 }
 const styles = StyleSheet.create({
   container: {
