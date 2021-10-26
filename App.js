@@ -4,9 +4,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Rocket from "./app/assets/rocket.png";
 
-import Home from "./app/screens/home/home";
-import Rover from "./app/screens/rover/rover";
-import Detail from "./app/screens/detail/detail";
+import Home from "./app/screens/home";
+import Rover from "./app/screens/rover";
+import Detail from "./app/screens/detail";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [animated, setAnimated] = useState(false);
@@ -63,9 +65,23 @@ export default function App() {
     );
   return (
     <NavigationContainer>
-      <Stack.Navigatot>
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigatot>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: "My Rovers" }}
+        />
+        <Stack.Screen
+          name="Detail"
+          component={Detail}
+          options={{ title: "Images" }}
+        />
+        <Stack.Screen
+          name="Rover"
+          component={Rover}
+          options={{ title: "Add Rover" }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
